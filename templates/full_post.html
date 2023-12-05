@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Flask App{% endblock %}
+
+{% block content %}
+    <section>
+        {% if post %}
+            <h2>{{ post.title }}</h2>
+            <div>
+                {{ post.content | safe }}
+            </div>
+        {% else %}
+            <p>No post found</p>
+        {% endif %}
+    </section>
+{% endblock %}

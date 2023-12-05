@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Flask App{% endblock %}
+
+{% block content %}
+    {% if posts %}
+        {% for post_id, post in posts.items() %}
+            <div class="blog-post">
+                <h2>{{ post.title }}</h2>
+                <div class="post-preview">
+                    {{ post.content[:200] }}
+                    {% if post.content|length > 200 %}
+                        <a href="{{ url_for('full_post', post_id=post_id) }}">Read more</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts found</p>
+    {% endif %}
+
+    <section class="">
+        <h3 class="pictures">See some of the world's best destinations!</h3>
+
+        <div id="imageSlider" class="slider">
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='alaska.jpg')}}" alt="Image 1">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='bali.jpg')}}" alt="Image 2">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='croatia.jpg')}}" alt="Image 3">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='iceland.jpg')}}" alt="Image 4">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='ireland.jpg')}}" alt="Image 5">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='maldives.jpg')}}" alt="Image 6">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='switzerland.jpg')}}" alt="Image 7">
+            </div>
+            <div class="slider-item">
+                <img src="{{ url_for('static', filename='thailand.jpg')}}" alt="Image 8">
+            </div>
+        </div>
+        <!-- Navigation buttons for the slider -->
+        <button type="button" id="prevBtn">Previous</button>
+        <button type="button" id="nextBtn">Next</button>
+    </section>
+{% endblock %}
